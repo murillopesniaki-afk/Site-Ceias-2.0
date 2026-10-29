@@ -1,0 +1,115 @@
+/* Configurações Gerais do Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f1ea;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #4a3728;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #777;
+    font-style: italic;
+}
+
+/* Container dos Flashcards (Organizados em grade) */
+.container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+/* Estrutura do Flashcard (Efeito 3D) */
+.flashcard {
+    background-color: transparent;
+    width: 280px;
+    height: 380px;
+    perspective: 1000px; /* Cria a profundidade 3D */
+}
+
+/* Elemento interno que vai girar */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d; /* Garante que os lados fiquem em 3D */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+/* Quando passar o mouse, o card gira 180 graus */
+.flashcard:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Configurações comuns para a Frente e o Verso */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Esconde o verso quando virado */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 2px solid #e0d9cd;
+}
+
+/* --- ESTILO DA FRENTE --- */
+.card-front img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+}
+
+.card-front h2 {
+    font-size: 1.2rem;
+    color: #4a3728;
+    margin: auto 0;
+    padding: 0 10px;
+}
+
+/* --- ESTILO DO VERSO --- */
+.card-back {
+    background-color: #4a3728;
+    color: #fff;
+    transform: rotateY(180deg); /* O verso já começa invertido */
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #d4a373;
+    padding-bottom: 8px;
+    width: 100%;
+}
+
+.card-back p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: left;
+    margin: 10px 0;
+}
